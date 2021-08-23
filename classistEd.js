@@ -1,90 +1,95 @@
-//start here, key value pair for a name and price. 
-class Menu {
-	
-	constructor() {
-		this.price_lookup = {}
-		console.log("Created Menu")
-	}
-	getItemPrice(item) {
-		return this.price_lookup[item] || 0 
-	}
-	setItemPrice(item, cost) {
-		this.price_lookup[item] = cost
-	}
-} 
+class Counter {
+    constructor() {
+    this.num = 0 //declares this to have a property of num which has a value of 0
+    }
 
-/*Create a system in which you can order a coffee through the coffee system
-needs to take orderCoffee input, return a list of orders made and total cost over the day. 
-You will use arrays, */
-class CoffeeSystem {
-	constructor() {
-		this.orders = []
-		this.menu = new Menu()
-		this.menu.setItemPrice("latte", 4.5)
-		this.menu.setItemPrice("flat white", 4.5)
-		this.menu.setItemPrice("long black", 4.5)
-		this.menu.setItemPrice("espresso", 2.1)
-		this.menu.setItemPrice("doppio", 3.8)
-	}
+    increment(amount = 1){
+        this.num = this.num + amount
+    }
 
-	getCoffee(coffee) {
-		let price = 0;
-		let coffeeTypes = {
-			'latte': 10,
-			'long black': 8,
-			'flat white': 9,
-			'doppio': 11
-		};
-		price = coffeeTypes[coffee] || 0; // "|| 0" basically creates a default class
-		return price;
-
-		// //take a string (coffee), return a price using a switch statement. Do this using an object/dictionary
-		// let price = 0
-		// switch(coffee) {
-		// 	case 'latte':
-		// 		price = 10;
-		// 		break;
-		// 	case 'long black':
-		// 		price = 8;
-		// 		break;
-		// 	case 'flat white':
-		// 		price = 9;
-		// 		break;
-		// 	case 'doppio':
-		// 		price = 7;
-		// 		break;
-		// 	default: 
-		// 		price = 0;
-		// 		break;	
-		// return price	
-	}
-
-	orderCoffee(customer, coffee) {
-		const price = this.getCoffee(coffee)
-		const order = new Order(coffee, customer, price)   /*array of orders */
-		this.orders.push(order);
-	}
-
-	//at home, get total by returning a number which is the sum of all costs in this.orders 
-	/*function*/ get total() {
-		let sum = 0
-		for (let i = 0; i < this.orders.length; i++) {
-			const order = this.orders[i];
-			sum += order.cost;
-		}
-		return sum;
-	}
-}
-
-class Order {
-	coffee
-	cost
-	customer
-	constructor(coffeeName, customerName, cost) {
-		this.coffee = coffeeName;
-		this.cost = cost;
-		this.customer = customerName
-	}
+    decrement(amount = 1){
+        this.num = this.num - amount
+    }
 }
 
 
+class CounterMap {
+    constructor() {
+        this.counters = {}
+    }
+
+    set(name, counter) {
+        if (this.counters[name] == null) { //plz watch video on =/==/==== later
+            this.counters[name] = counter 
+        }
+    }
+
+    get(name) {
+        return this.counters[name]
+    }
+
+
+}
+//TASK
+//implement Counter and set of counter, should have constructor with 2 methods within, increment and decrement, each should have one parameter called amount. The amount should default to one. 
+//Counter needs to have a property of num
+//implement a counter map/list. This should hold a dictionary of counters. The counter list class should have a method called "set", taking two parameters "name" and "counter"
+
+//Feedback
+//generally good to get used to mapping things out spatially when coding, especially when using classes in JS
+
+//Next step
+//use the above to create a todo list application
+//need to include a class for items and for the lists that they go in. 
+//what properties will a todo have? 
+
+const status = {
+    INCOMPLETE: 'incomplete',
+    COMPLETE: 'complete',
+    DELETE: 'delete',
+}
+
+class Todo {
+    constructor() {
+        this.text = text 
+        this.dueDate = null; //instantiate the todo with a due date of null
+    }
+
+
+    disposeTodo(newStatus) {
+        switch (newStatus) {
+            case "complete":
+                this.status = newStatus
+                break;
+            case "delety": //would this not be delete?
+                this.status = newStatus //why would it still be newstatus?
+                break;
+            case "rescheduled": //followed by - this.status = postponed?
+                break;
+            default: 
+                console.log("Isaac Austizimos")
+                break;
+        }
+
+        // can also write as -->   disposeTodo(newStatus) {
+        //this.status = newStatus
+    }
+
+    get dueTillDue() {
+        const currentDate = new Date() //gives exact date and time
+        if (this.dueDate != null) {
+            return this.dueDate - currentDate
+        } else {
+            return null
+        }
+    }
+
+    get formattedDaysTillDue  //get makes it a computed property (what is this?)
+
+
+
+class TodoList {
+    constructor() {
+//what am I intending to do with this function? 
+    }
+}
